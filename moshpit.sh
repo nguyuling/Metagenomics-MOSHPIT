@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# bash moshpit.sh allforce         run all unfinished steps, OR
+# bash moshpit.sh all              run all steps regardlessly
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/lib.sh"
 
