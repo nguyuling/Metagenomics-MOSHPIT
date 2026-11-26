@@ -3,10 +3,7 @@
 [[parsl.executors]]
 class = "HighThroughputExecutor"
 label = "default"
-max_workers_per_node = 2
 
 [parsl.executors.provider]
 class = "LocalProvider"
-init_blocks = 1
-min_blocks = 0
-max_blocks = 1
+max_blocks = 2
