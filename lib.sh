@@ -4,7 +4,7 @@ set -e
 # SET
 OUT_DIR=/T7/metagenomics
 DB_DIR=/T7/databases
-threads=6
+threads=8
 
 # docker image
 IMAGE="quay.io/qiime2/moshpit:2026.7"
@@ -22,9 +22,6 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 quast_db="$DB_DIR/quast/reference-genomes.qza"
 busco_db="$DB_DIR/busco/busco-db-prokaryota.qza"
 kraken_db="$DB_DIR/kraken/kraken2-db.qza"
-
-# parallelization 
-parallelization="$SCRIPT_DIR/parallelization/local.config.toml"
 
 mkdir -p "$LOG"
 log_file="$LOG/pipeline_$(date '+%Y%m%d_%H%M%S').log"

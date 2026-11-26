@@ -87,7 +87,6 @@ genome_assembly() {
         --p-num-cpu-threads "$threads" \
         --p-min-contig-len 500 \
         --o-contigs "$Assembly/contigs.qza" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # comprehensive contigs quality assessment
     run mosh assembly evaluate-quast \
@@ -112,7 +111,6 @@ mag_binning() {
         --p-threads "$threads" \
         --p-seed 100 \
         --o-index "$Binning/contigs-index.qza" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # read mapping
     run mosh assembly map-reads \
@@ -121,7 +119,6 @@ mag_binning() {
         --p-threads "$threads" \
         --p-seed 100 \
         --o-alignment-maps "$Binning/reads-to-contigs-aln.qza" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # contig binning using MetaBAT 2
     run mosh mag bin-contigs-metabat \
@@ -142,7 +139,6 @@ mag_binning() {
         --p-cpu 2 \
         --o-results "$Binning/busco-results.qza" \
         --o-visualization "$Binning/mags.qzv" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # filter out low quality MAGs
     run mosh mag filter-mags \
@@ -196,7 +192,6 @@ taxonomic_classification() {
         --p-memory-mapping \
         --o-reports "$Taxonomic/kraken2-reports-mags.qza" \
         --o-outputs "$Taxonomic/kraken2-hits-mags.qza" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # convert artifacts
     run mosh annotate kraken2-to-mag-features \
@@ -218,7 +213,6 @@ taxonomic_classification() {
         --p-threads "$threads" \
         --p-seed 100 \
         --o-alignment-maps "$Taxonomic/reads-to-mags-aln.qza" \
-        --parallel-config "$parallelization" \
         --verbose || return 1
     # mag length estimation
     run mosh mag get-feature-lengths \
