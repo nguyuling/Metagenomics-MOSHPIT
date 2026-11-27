@@ -12,12 +12,12 @@ Metagenomics analysis using MOSHPIT (MOdular SHotgun metagenome Pipelines with I
 
 2. Busco database
 ```bash
-qiime mag fetch-busco-db --p-lineages bacteria_odb12 --o-db <DB_PATH>/busco/busco-db-prokaryota.qza --verbose
+    qiime mag fetch-busco-db --p-lineages bacteria_odb12 --o-db <DB_PATH>/busco/busco-db-prokaryota.qza --verbose
 ```
 
 3. Kraken database
 ```bash
-qiime annotate build-kraken-db --p-collection standard8 --o-kraken2-db <DB_PATH>/kraken/kraken2-db.qza --o-bracken-db <DB_PATH>/kraken/bracken-db.qza --verbose
+    qiime annotate build-kraken-db --p-collection standard8 --o-kraken2-db <DB_PATH>/kraken/kraken2-db.qza --o-bracken-db <DB_PATH>/kraken/bracken-db.qza --verbose
 ```
 
 ### Guide to Run the Pipeline
